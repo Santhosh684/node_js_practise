@@ -5,6 +5,10 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 
+// console.log(__dirname , __filename);
+// console.log( "Process Id : " + process.pid  + "\n Platform : " +  process.platform + "\nVersion" + process.version);
+// console.log( process.env)
+
 const filePath = path.join(__dirname, "data", "users.json");
 
 // 1️⃣ GET all users
