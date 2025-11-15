@@ -1,4 +1,5 @@
 const fs = require("fs").promises;
+const { log } = require("console");
 const emitterEvent = require("events");
 const path = require("path");
 
@@ -36,19 +37,22 @@ let arr = [0,0,0,0,0];
 
     while(i < 5){
 
-    id = getId(5,1);
+    id = getId(5,0);
     if(arr[id] != 1){
         const  val = {
         "id" :  id ,
         "name" :  `user${id}`
+        
     }
-
+    arr[id] = 1;
     console.log(val);
     caller.emit("user-added" , val);
     // Removed: Emitting "user-added" with a string instead of a user object would cause errors in the event handler.
     i++;
     }
     
+    await new Promise((resolve) => setTimeout(resolve, 50));
+
 }
 })();
 
