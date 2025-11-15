@@ -30,11 +30,15 @@ caller.on("user-added" , async (user) =>{
 })
 
 let i = 0;
+let arr = [0,0,0,0,0];
 
-while(i < 5){
+( async() => {
 
-    id = i;
-    const  val = {
+    while(i < 5){
+
+    id = getId(5,1);
+    if(arr[id] != 1){
+        const  val = {
         "id" :  id ,
         "name" :  `user${id}`
     }
@@ -43,6 +47,9 @@ while(i < 5){
     caller.emit("user-added" , val);
     // Removed: Emitting "user-added" with a string instead of a user object would cause errors in the event handler.
     i++;
+    }
+    
 }
+})();
 
 
